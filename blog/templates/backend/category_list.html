@@ -19,15 +19,20 @@
                     <tr>
                         <th scope="col">#</th>
                         <th scope="col">Category Name</th>
+                        <th scope="col">Action</th>
                     </tr>
                     </thead>
                     <tbody>
                     {% for obj in categories %}
                         <tr>
                             <th scope="row">{{ obj.id }}</th>
-                            <td><h5>{{ obj.name }}</h5> <br>
-                                <a class="btn" href="{% url 'category_update' obj.pk %}">Update</a>
-                                <a class="btn" href="{% url 'delete_category' obj.pk %}">Delete</a></td>
+                            <td><h5>{{ obj.name }}</h5>
+                                
+
+                            <td>
+                                <a class="btn text-success" href=""><i class="fa-solid fa-rotate"></i></a>
+                                <a class="btn text-danger" href=""><i class="fa-solid fa-trash"></i></a></td>
+                            
                         </tr>
                     {% endfor %}
                     </tbody>

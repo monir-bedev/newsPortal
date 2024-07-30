@@ -1,15 +1,21 @@
-from typing import Any
-from django.db.models.query import QuerySet
 from django.views import generic
 from .models import Category
+from .forms import CategoryForm
 
 # Create your views here.
+
+# Category List
 
 class CategoryListView(generic.ListView):
     model = Category
     context_object_name = 'categories'
     template_name = 'backend/category_list.html'
 
-    def get_queryset(self) -> QuerySet[Any]:
-        print("Hello World")
-        return super().get_queryset()
+
+# Create New Category List
+
+class CategoryCreateView(generic.CreateView):
+    model = Category
+    success_url = '/blog/category/create/'
+    template_name = 'backend/category_create.html'
+    form_class = CategoryForm

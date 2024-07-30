@@ -1,0 +1,33 @@
+{% extends 'base_BE.html' %}
+
+{% block title %} Create new post {% endblock %}
+
+{% block content %}
+
+    <div class="row">
+        <div class="col-md-12">
+            <h1 class="mt-4">Create New category</h1>
+            <ol class="breadcrumb mb-4">
+                <li class="breadcrumb-item active">Dashboard</li>
+            </ol>
+        </div>
+        <div class="col-md-12 m-2">
+            <form method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group mb-2">
+                            <label for="name" class="mb-2">Enter category Name</label>
+                            {{ form.name }}
+                        </div>
+                        <div class="form-group mb-2">
+                            <label for="thumbnail" class="mb-2">Upload category thumbnail (Optional)</label>
+                            {{ form.thumbnail }}
+                        </div>
+                    </div>
+                </div>
+                <button class="btn btn-success mt-3" type="submit">Submit</button>
+            </form>
+        </div>
+    </div>
+{% endblock %}
