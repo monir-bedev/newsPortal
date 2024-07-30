@@ -1,35 +1,40 @@
 {% extends 'base_BE.html' %}
 
+{% load static %}
+
 {% block title %} Category list {% endblock %}
 
 {% block content %}
     <div class="row">
         <div class="col-md-12">
-            <h1 class="mt-4">All Categories</h1>
+            <h1 class="mt-4">Categories List</h1>
             <ol class="breadcrumb mb-4">
                 <li class="breadcrumb-item active">List of Categories</li>
             </ol>
         </div>
-        <div class="col-md-12 m-2">
-
-            <table class="table table-bordered">
-                <thead>
-                <tr>
-                    <th scope="col">#</th>
-                    <th scope="col">Category Name</th>
-                </tr>
-                </thead>
-                <tbody>
-                {% for obj in categories %}
+        {% if categories %}
+            <div class="col-md-12 m-2">
+                <table class="table table-bordered">
+                    <thead>
                     <tr>
-                        <th scope="row">{{ obj.id }}</th>
-                        <td><h5>{{ obj.name }}</h5> <br>
-                            <a class="btn" href="{% url 'category_update' obj.pk %}">Update</a>
-                            <a class="btn" href="{% url 'delete_category' obj.pk %}">Delete</a></td>
+                        <th scope="col">#</th>
+                        <th scope="col">Category Name</th>
                     </tr>
-                {% endfor %}
-                </tbody>
-            </table>
-        </div>
+                    </thead>
+                    <tbody>
+                    {% for obj in categories %}
+                        <tr>
+                            <th scope="row">{{ obj.id }}</th>
+                            <td><h5>{{ obj.name }}</h5> <br>
+                                <a class="btn" href="{% url 'category_update' obj.pk %}">Update</a>
+                                <a class="btn" href="{% url 'delete_category' obj.pk %}">Delete</a></td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+                {% else %}
+            </div>
+            <img src="{% static 'assets/img/no_data.png' %}" class="img-fluid mt-5" alt="No data">
+        {% endif %}
     </div>
 {% endblock %}
