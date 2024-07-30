@@ -1,6 +1,8 @@
 from django.urls import path
+from .views import CategoryListView
 
 
 urlpatterns = [
-    # path('admin/', admin.site.urls),
+    # All category list
+    path('categories/', CategoryListView.as_view(), name='category_list'),
 ]
