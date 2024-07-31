@@ -62,3 +62,14 @@ class UpdatePostView(SuccessMessageMixin, generic.UpdateView):
 
     def get_success_url(self):
         return reverse('post_update', kwargs={'pk': self.object.pk})
+
+
+# delete post
+class DeletePostView(SuccessMessageMixin, generic.DeleteView):
+    model = Post
+    success_url = '/blog/posts/'
+    template_name = 'common/delete.html'
+    success_message = 'Successfully Deleted'
+
+
+

@@ -23,4 +23,8 @@ urlpatterns = [
 
     # Update post
     path('update-post/<int:pk>/', views.UpdatePostView.as_view(), name='post_update'),
+
+    # Delete post
+    path('delete-post/<int:pk>/', views.DeletePostView.as_view(), name='delete_post'),
+
 ]

@@ -44,7 +44,7 @@
 
                             <td>
                                 <a class="btn text-success" href="{% url 'post_update' post.pk %}"><i class="fa-solid fa-rotate"></i></a>
-                                <a class="btn text-danger" href="#"><i class="fa-solid fa-trash"></i></a>
+                                <a class="btn text-danger" href="{% url 'delete_post' post.pk %}"><i class="fa-solid fa-trash"></i></a>
                                 <a class="btn text-success" href=""><i class="fa-solid fa-link"></i></a>
                             </td>
                         </tr>
