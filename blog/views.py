@@ -1,4 +1,5 @@
 from django.views import generic
+from django.contrib.messages.views import SuccessMessageMixin
 from .models import Category
 from .forms import CategoryForm
 
@@ -14,8 +15,23 @@ class CategoryListView(generic.ListView):
 
 # Create New Category List
 
-class CategoryCreateView(generic.CreateView):
+class CategoryCreateView(SuccessMessageMixin, generic.CreateView):
     model = Category
     success_url = '/blog/category/create/'
+    template_name = 'backend/category_create.html'
+    form_class = CategoryForm
+    success_message = 'The Category has been successfully Created.'
+
+    def form_valid(self, form):
+        obj = form.save(commit=False)
+        obj.author = self.request.user
+        return super(CategoryCreateView, self).form_valid(form)
+
+
+# Update Category
+
+class CategoryUpdateView(generic.UpdateView):
+    model = Category
+    success_url = '/blog/categories/'
     template_name = 'backend/category_create.html'
     form_class = CategoryForm

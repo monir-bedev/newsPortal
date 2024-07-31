@@ -1,6 +1,6 @@
 {% extends 'base_BE.html' %}
 
-{% block title %} Create new post {% endblock %}
+{% block title %} Create New category {% endblock %}
 
 {% block content %}
 
@@ -11,7 +11,7 @@
                 <li class="breadcrumb-item active">Dashboard</li>
             </ol>
         </div>
-        <div class="col-md-12 m-2">
+        <div class="col-md-12 m-2">    
             <form method="post" enctype="multipart/form-data">
                 {% csrf_token %}
                 <div class="row">
