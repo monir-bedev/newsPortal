@@ -20,4 +20,7 @@ urlpatterns = [
 
     # New post Create
     path('create-post/', views.CreatePostView.as_view(), name='post_create'),
+
+    # Update post
+    path('update-post/<int:pk>/', views.UpdatePostView.as_view(), name='post_update'),
 ]

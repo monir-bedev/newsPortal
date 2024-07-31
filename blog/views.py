@@ -39,16 +39,26 @@ class CategoryDeleteView(SuccessMessageMixin, generic.DeleteView):
     template_name = 'common/delete.html'
     success_message = 'Successfully Deleted'
 
-#create post list
+# create post list
 class PostListView(generic.ListView):
     model = Post
     context_object_name = 'posts'
     template_name = 'backend/post_list.html'
 
-#create new post
+# create new post
 class CreatePostView(SuccessMessageMixin, generic.CreateView):
     model = Post
     success_url = '/blog/create-post/'
     template_name = 'backend/post_create.html'
     form_class = PostForm
     success_message = 'The post has been created successfully.'
+
+# update post
+class UpdatePostView(SuccessMessageMixin, generic.UpdateView):
+    model = Post
+    template_name = 'backend/post_create.html'
+    form_class = PostForm
+    success_message = 'The post has been Updated successfully.'
+
+    def get_success_url(self):
+        return reverse('post_update', kwargs={'pk': self.object.pk})
