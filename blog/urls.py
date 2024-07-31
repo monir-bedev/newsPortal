@@ -1,5 +1,5 @@
 from django.urls import path
-from .views import CategoryListView, CategoryCreateView, CategoryUpdateView
+from .views import CategoryListView, CategoryCreateView, CategoryUpdateView, CategoryDeleteView
 
 
 urlpatterns = [
@@ -14,4 +14,8 @@ urlpatterns = [
     # Update category
 
     path('update-category/<int:pk>/', CategoryUpdateView.as_view(), name='category_update'),
+
+    # Delete category
+
+    path('delete-category/<int:pk>/', CategoryDeleteView.as_view(), name='delete_category'),
 ]

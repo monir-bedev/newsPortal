@@ -35,3 +35,12 @@ class CategoryUpdateView(generic.UpdateView):
     success_url = '/blog/categories/'
     template_name = 'backend/category_create.html'
     form_class = CategoryForm
+
+
+# Delete Category
+
+class CategoryDeleteView(generic.DeleteView):
+    model = Category
+    success_url = '/blog/categories/'
+    template_name = 'common/delete.html'
+
