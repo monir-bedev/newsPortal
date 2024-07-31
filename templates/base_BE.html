@@ -63,8 +63,8 @@
                     <div class="collapse" id="collapseLayouts" aria-labelledby="headingOne"
                          data-bs-parent="#sidenavAccordion">
                         <nav class="sb-sidenav-menu-nested nav">
-                            <a class="nav-link" href="#">Create post</a>
-                            <a class="nav-link" href="#">All posts</a>
+                            <a class="nav-link" href="#">Add New</a>
+                            <a class="nav-link" href="{% url 'post_list' %}">Posts List</a>
                         </nav>
                     </div>
                     <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapsePages"
@@ -76,9 +76,8 @@
                     <div class="collapse" id="collapsePages" aria-labelledby="headingTwo"
                          data-bs-parent="#sidenavAccordion">
                         <nav class="sb-sidenav-menu-nested nav accordion" id="sidenavAccordionPages">
+                            <a class="nav-link" href="{% url 'category_create' %}">Add New</a>
                             <a class="nav-link" href="{% url 'category_list' %}">Categories List</a>
-                            <a class="nav-link" href="{% url 'category_create' %}">New Category Create</a>
-                            
                         </nav>
                     </div>
                    <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseUser"

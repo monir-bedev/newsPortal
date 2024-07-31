@@ -37,7 +37,12 @@
                         </tbody>
                     </table>
             {% else %}
-                <img src="{% static 'assets/img/no_data.png' %}" class="img-fluid mt-5" alt="No data">
+                <div style="display: flex; justify-content: center; align-items: center;">
+                    <div style="width: 200px; margin-top: 250px;">
+                        <img style="width: 100%;" src="{% static 'assets/img/no_data.png' %}" alt="No data">
+                    </div>
+                </div>
+                
             {% endif %}
         </div>
     </div>

@@ -14,9 +14,9 @@ class DomainEntity(models.Model):
 
 
 # Create category models
-
 class Category(DomainEntity):
     name = models.CharField(max_length=100)
+    # parent = models.ForeignKey('self', null=True, blank=True, on_delete=models.CASCADE)
     thumbnail = models.ImageField(upload_to="blog/thumbnails", blank=True, null=True)
 
     class Meta:
@@ -25,3 +25,13 @@ class Category(DomainEntity):
     def __str__(self):
         return self.name
 
+# Crete Posts Model
+class Post(DomainEntity):
+    title = models.CharField(max_length=100)
+    description = models.TextField()
+    category = models.ForeignKey(Category, on_delete=models.CASCADE)
+    image = models.ImageField(upload_to="blog/%Y/%m/%d")
+    author = models.ForeignKey(User, on_delete=models.CASCADE, blank=True, null=True)
+
+    def __str__(self):
+        return self.title

@@ -1,12 +1,12 @@
+from django.urls import reverse
 from django.views import generic
 from django.contrib.messages.views import SuccessMessageMixin
-from .models import Category
+
+from .models import Category, Post
 from .forms import CategoryForm
 
-# Create your views here.
 
 # Category List
-
 class CategoryListView(generic.ListView):
     model = Category
     context_object_name = 'categories'
@@ -14,7 +14,6 @@ class CategoryListView(generic.ListView):
 
 
 # Create New Category List
-
 class CategoryCreateView(SuccessMessageMixin, generic.CreateView):
     model = Category
     success_url = '/blog/category/create/'
@@ -22,27 +21,29 @@ class CategoryCreateView(SuccessMessageMixin, generic.CreateView):
     form_class = CategoryForm
     success_message = 'The Category has been Created Successfully.'
 
-    def form_valid(self, form):
-        obj = form.save(commit=False)
-        obj.author = self.request.user
-        return super(CategoryCreateView, self).form_valid(form)
-
 
 # Update Category
-
 class CategoryUpdateView(SuccessMessageMixin, generic.UpdateView):
     model = Category
-    success_url = '/blog/categories/'
     template_name = 'backend/category_create.html'
     form_class = CategoryForm
     success_message = 'The Category has been Updated Successfully.'
 
+    def get_success_url(self):
+        return reverse('category_update', kwargs={'pk': self.object.pk})
+
 
 # Delete Category
-
 class CategoryDeleteView(SuccessMessageMixin, generic.DeleteView):
     model = Category
     success_url = '/blog/categories/'
     template_name = 'common/delete.html'
     success_message = 'Successfully Deleted'
 
+#create post list
+class PostListView(generic.ListView):
+    model = Post
+    context_object_name = 'posts'
+    template_name = 'backend/post_list.html'
+
+#create new post
