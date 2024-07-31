@@ -3,8 +3,7 @@ from django.views import generic
 from django.contrib.messages.views import SuccessMessageMixin
 
 from .models import Category, Post
-from .forms import CategoryForm
-
+from .forms import CategoryForm, PostForm
 
 # Category List
 class CategoryListView(generic.ListView):
@@ -16,7 +15,7 @@ class CategoryListView(generic.ListView):
 # Create New Category List
 class CategoryCreateView(SuccessMessageMixin, generic.CreateView):
     model = Category
-    success_url = '/blog/category/create/'
+    success_url = '/blog/create-category/'
     template_name = 'backend/category_create.html'
     form_class = CategoryForm
     success_message = 'The Category has been Created Successfully.'
@@ -47,3 +46,9 @@ class PostListView(generic.ListView):
     template_name = 'backend/post_list.html'
 
 #create new post
+class CreatePostView(SuccessMessageMixin, generic.CreateView):
+    model = Post
+    success_url = '/blog/create-post/'
+    template_name = 'backend/post_create.html'
+    form_class = PostForm
+    success_message = 'The post has been created successfully.'

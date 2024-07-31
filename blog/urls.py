@@ -1,20 +1,23 @@
 from django.urls import path
-from .views import CategoryListView, CategoryCreateView, CategoryUpdateView, CategoryDeleteView,PostListView
+from . import views
 
 
 urlpatterns = [
     # Category list
-    path('categories/', CategoryListView.as_view(), name='category_list'),
+    path('categories/', views.CategoryListView.as_view(), name='category_list'),
     
     # Create new category
-    path('category/create/', CategoryCreateView.as_view(), name='category_create'),
+    path('create-category/', views.CategoryCreateView.as_view(), name='category_create'),
 
     # Update category
-    path('update-category/<int:pk>/', CategoryUpdateView.as_view(), name='category_update'),
+    path('update-category/<int:pk>/', views.CategoryUpdateView.as_view(), name='category_update'),
 
     # Delete category
-    path('delete-category/<int:pk>/', CategoryDeleteView.as_view(), name='delete_category'),
+    path('delete-category/<int:pk>/', views.CategoryDeleteView.as_view(), name='delete_category'),
 
     # Post List
-    path('post-list/', PostListView.as_view(), name='post_list'),
+    path('posts/', views.PostListView.as_view(), name='post_list'),
+
+    # New post Create
+    path('create-post/', views.CreatePostView.as_view(), name='post_create'),
 ]
