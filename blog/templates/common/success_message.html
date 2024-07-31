@@ -1,7 +1,13 @@
 {% if messages %}
-    <ul class="messages">
+    <ul style="list-style: none; color: red; margin-left: -35px;" class="messages">
         {% for message in messages %}
-            <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+            <li{% if message.tags %} class="{{ message.tags }}"{% endif %} >
+                <span style="
+                background-color:#fcf3ff; 
+                padding: 8px 14px; 
+                border-radius: 8px;
+                vibrate: [200, 100, 200];
+                ">{{ message }}</span></li>
         {% endfor %}
     </ul>
 {% endif %}

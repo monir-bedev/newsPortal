@@ -20,7 +20,7 @@ class CategoryCreateView(SuccessMessageMixin, generic.CreateView):
     success_url = '/blog/category/create/'
     template_name = 'backend/category_create.html'
     form_class = CategoryForm
-    success_message = 'The Category has been successfully Created.'
+    success_message = 'The Category has been Created Successfully.'
 
     def form_valid(self, form):
         obj = form.save(commit=False)
@@ -30,17 +30,19 @@ class CategoryCreateView(SuccessMessageMixin, generic.CreateView):
 
 # Update Category
 
-class CategoryUpdateView(generic.UpdateView):
+class CategoryUpdateView(SuccessMessageMixin, generic.UpdateView):
     model = Category
     success_url = '/blog/categories/'
     template_name = 'backend/category_create.html'
     form_class = CategoryForm
+    success_message = 'The Category has been Updated Successfully.'
 
 
 # Delete Category
 
-class CategoryDeleteView(generic.DeleteView):
+class CategoryDeleteView(SuccessMessageMixin, generic.DeleteView):
     model = Category
     success_url = '/blog/categories/'
     template_name = 'common/delete.html'
+    success_message = 'Successfully Deleted'
 

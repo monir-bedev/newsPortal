@@ -12,32 +12,33 @@
                 <li class="breadcrumb-item active">List of Categories</li>
             </ol>
         </div>
-        {% if categories %}
-            <div class="col-md-12 m-2">
+         <div class="col-md-12 m-2">
+            {% include "common/success_message.html" %}
+            {% if categories %}
                 <table class="table table-bordered">
-                    <thead>
-                        <tr>
-                            <th scope="col">#</th>
-                            <th scope="col">Category Name</th>
-                            <th scope="col"><span style="padding-left: 15px;">Action</span></th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                    {% for obj in categories %}
-                        <tr>
-                            <th scope="row">{{ obj.id }}</th>
-                            <td>{{ obj.name }}</td>
-                            <td>
-                                <a class="btn text-success" href="{% url 'category_update' obj.pk %}"><i class="fa-solid fa-rotate"></i></a>
-                                <a class="btn text-danger" href="{% url 'delete_category' obj.pk %}"><i class="fa-solid fa-trash"></i></a>
-                            </td>      
-                        </tr>
-                    {% endfor %}
-                    </tbody>
-                </table>
-                {% else %}
-            </div>
-            <img src="{% static 'assets/img/no_data.png' %}" class="img-fluid mt-5" alt="No data">
-        {% endif %}
+                        <thead>
+                            <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">Category Name</th>
+                                <th scope="col"><span style="padding-left: 15px;">Action</span></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        {% for obj in categories %}
+                            <tr>
+                                <th scope="row">{{ obj.id }}</th>
+                                <td>{{ obj.name }}</td>
+                                <td>
+                                    <a class="btn text-success" href="{% url 'category_update' obj.pk %}"><i class="fa-solid fa-rotate"></i></a>
+                                    <a class="btn text-danger" href="{% url 'delete_category' obj.pk %}"><i class="fa-solid fa-trash"></i></a>
+                                </td>      
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+            {% else %}
+                <img src="{% static 'assets/img/no_data.png' %}" class="img-fluid mt-5" alt="No data">
+            {% endif %}
+        </div>
     </div>
 {% endblock %}
