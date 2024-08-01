@@ -1,0 +1,46 @@
+{% extends 'base_BE.html' %}
+
+{% block title %} Reporter List{% endblock %}
+
+{% block content %}
+    <div class="row">
+        <div class="col-md-12">
+            <h1 class="mt-4">Reporter List</h1>
+            <ol class="breadcrumb mb-4">
+                <li class="breadcrumb-item active">Dashboard</li>
+            </ol>
+        </div>
+        <div class="col-md-12 m-2">
+        {% include 'common/success_message.html' %}
+            <table class="table table-bordered">
+                <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Reporter's name list</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Role</th>
+                    <th scope="col">Status</th>
+                    <th scope="col">Created At</th>
+                    <th scope="col">Actions</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for user in users %}
+                    <tr>
+                        <th scope="row">{{ user.id }}</th>
+                        <td>{{ user.username }}</td>
+                        <td>{{ user.email }}</td>
+                        <td>{% if user.is_superuser %} Superuser {% else %} Reporter {% endif %}</td>
+                        <td>{% if user.is_active %} Active {% else %} Inactive {% endif %}</td>
+                        <td>{{ user.date_joined|date:' Y/m/d' }}</td>
+                        <td>
+                            <a class="btn text-success" href="#"><i class="fa-solid fa-rotate"></i></a>
+                            <a class="btn text-danger" href="#"><i class="fa-solid fa-trash"></i></a>
+                        </td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+{% endblock %}

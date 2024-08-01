@@ -28,7 +28,7 @@ class PostForm(forms.ModelForm):
 
         widgets = {
             'title': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Enter post title'}),
-            'description': forms.Textarea(attrs={'class': 'form-control', 'rows': 7}),
+            'description': forms.Textarea(attrs={'class': 'form-control', 'rows': 8}),
             'category': forms.Select(attrs={'class': 'form-control'}),
             'is_published': forms.CheckboxInput(attrs={'class': 'form-check-input'}),
             'image': forms.FileInput(attrs={'class': 'form-control'}),
