@@ -18,6 +18,9 @@ urlpatterns = [
     # Post List
     path('posts/', views.PostListView.as_view(), name='post_list'),
 
+    # Review Post List
+    path('review-post/', views.PostReviewList.as_view(), name='unpublished_post_list'),
+
     # New post Create
     path('create-post/', views.CreatePostView.as_view(), name='post_create'),
 

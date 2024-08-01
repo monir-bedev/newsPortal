@@ -35,14 +35,14 @@
           <div class="col-md-6" class="mb-2">
             <label for="description" class="mb-2">Write your post</label>
             {{ form.description }}
-            {% if request.user.is_superuser %}
-              <div class="d-flex" style="justify-content: start; align-items: center;">
-                {{ form.is_published }}
-                <label for="is_published" class="mt-3 mb-2 px-2">is_published</label>
-              </div>
-            {% endif %}
           </div>
         </div>
+        {% if request.user.is_superuser %}
+        <div class="d-flex" style="justify-content: start; align-items: center;">
+          {{ form.is_published }}
+          <label for="is_published" class="mt-3 mb-2 px-2">Click here for Approve</label>
+        </div>
+      {% endif %}
         <button class="btn btn-success mt-3" type="submit">
           {% if post.id %}
             update

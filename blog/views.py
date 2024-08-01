@@ -1,3 +1,5 @@
+from typing import Any
+from django.db.models.query import QuerySet
 from django.urls import reverse
 from django.views import generic
 from django.contrib.messages.views import SuccessMessageMixin
@@ -39,12 +41,24 @@ class CategoryDeleteView(SuccessMessageMixin, generic.DeleteView):
     template_name = 'common/delete.html'
     success_message = 'Successfully Deleted'
 
-# create post list
+# create post list[published]
 class PostListView(generic.ListView):
     model = Post
     context_object_name = 'posts'
     paginate_by = 20
     template_name = 'backend/post_list.html'
+
+    def get_queryset(self):
+        return Post.objects.filter(is_published=True)
+    
+class PostReviewList(generic.ListView):
+    model = Post
+    context_object_name = 'posts'
+    paginate_by = 20
+    template_name = 'backend/post_list.html'
+
+    def get_queryset(self):
+        return Post.objects.filter(is_published=False)
 
 # create new post
 class CreatePostView(SuccessMessageMixin, generic.CreateView):
