@@ -20,9 +20,10 @@
                         <th scope="col">#</th>
                         <th scope="col">Title</th>
                         <th scope="col">Category</th>
+                        <th scope="col">Author</th>
                         <th scope="col">Create At</th>
                         <th scope="col">Update At</th>
-                        <th scope="col">is_published</th>
+                        <th scope="col">Status</th>
                         <th scope="col">Actions</th>
                     </tr>
                     </thead>
@@ -32,6 +33,7 @@
                             <th scope="row">{{ post.id }}</th>
                             <td>{{ post.title }}</td>
                             <td>{{ post.category }}</td>
+                            <td>{{ post.author }}</td>
                             <td>{{ post.created_at }}</td>
                             <td>{{ post.updated_at }}</td>
                             <td class="d-flex justify-content-center align-items-center">
@@ -41,11 +43,10 @@
                                     <span class="text-danger"><i class="fa-solid fa-xmark"></i></span>
                                 {% endif %}
                             </td>
-
                             <td>
                                 <a class="btn text-success" href="{% url 'post_update' post.pk %}"><i class="fa-solid fa-rotate"></i></a>
                                 <a class="btn text-danger" href="{% url 'delete_post' post.pk %}"><i class="fa-solid fa-trash"></i></a>
-                                <a class="btn text-success" href=""><i class="fa-solid fa-link"></i></a>
+                                <a style="padding: 0px 6px; border-radius: 50%; background-color: antiquewhite;" class="btn btn-sm text-success" href="{% url 'post_detail' post.pk %}"><i style="font-size: 10px;" class="fa-regular fa-eye"></i></a>
                             </td>
                         </tr>
                     {% endfor %}

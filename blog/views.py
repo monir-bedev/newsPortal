@@ -43,6 +43,7 @@ class CategoryDeleteView(SuccessMessageMixin, generic.DeleteView):
 class PostListView(generic.ListView):
     model = Post
     context_object_name = 'posts'
+    paginate_by = 20
     template_name = 'backend/post_list.html'
 
 # create new post
@@ -52,6 +53,11 @@ class CreatePostView(SuccessMessageMixin, generic.CreateView):
     template_name = 'backend/post_create.html'
     form_class = PostForm
     success_message = 'The post has been created successfully.'
+
+    def form_valid(self, form):
+        obj = form.save(commit=False)
+        obj.author = self.request.user
+        return super(CreatePostView, self).form_valid(form)
 
 # update post
 class UpdatePostView(SuccessMessageMixin, generic.UpdateView):
@@ -72,4 +78,9 @@ class DeletePostView(SuccessMessageMixin, generic.DeleteView):
     success_message = 'Successfully Deleted'
 
 
+# post details
+class PostDetailView(generic.DetailView):
+    model = Post
+    context_object_name = 'post'
+    template_name = 'backend/post_details.html'
 

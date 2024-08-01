@@ -27,4 +27,7 @@ urlpatterns = [
     # Delete post
     path('delete-post/<int:pk>/', views.DeletePostView.as_view(), name='delete_post'),
 
+    # Post details
+    path('post-details/<int:pk>/', views.PostDetailView.as_view(), name='post_detail'),
+
 ]
