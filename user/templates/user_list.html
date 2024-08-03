@@ -34,8 +34,8 @@
                         <td>{% if user.is_active %} Active {% else %} Inactive {% endif %}</td>
                         <td>{{ user.date_joined|date:' Y/m/d' }}</td>
                         <td>
-                            <a class="btn text-success" href="#"><i class="fa-solid fa-rotate"></i></a>
-                            <a class="btn text-danger" href="#"><i class="fa-solid fa-trash"></i></a>
+                            <a class="btn text-success" href="{% url "update_user" user.pk %}"><i class="fa-solid fa-rotate"></i></a>
+                            <a class="btn text-danger" href="{% url 'delete_user' user.pk %}"><i class="fa-solid fa-trash"></i></a>
                         </td>
                     </tr>
                 {% endfor %}

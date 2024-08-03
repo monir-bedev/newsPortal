@@ -1,0 +1,33 @@
+{% extends 'base_BE.html' %}
+
+{% block title %} Create new post {% endblock %}
+
+{% block content %}
+
+    <div class="row">
+        <div class="col-md-12">
+            <h1 class="mt-4">Create New user</h1>
+            <ol class="breadcrumb mb-4">
+                <li class="breadcrumb-item active">User Dashboard</li>
+            </ol>
+        </div>
+        <div class="col-md-12 m-2">
+            <form method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group mb-2">
+                            <label for="username" class="mb-2">Enter User Name</label>
+                            {{ form.username }}
+                            <label for="email" class="mt-3 mb-2">Email</label>
+                            {{ form.email }}
+                            <label for="password" class="mt-3 mb-2">Password</label>
+                            {{ form.password }}
+                        </div>
+                    </div>
+                </div>
+                <button class="btn btn-success mt-3" type="submit">submit</button>
+            </form>
+        </div>
+    </div>
+{% endblock %}
