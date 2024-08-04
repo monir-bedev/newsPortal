@@ -3,6 +3,9 @@ from . import views
 
 
 urlpatterns = [
+    # Dashboard
+    path('', views.DashboardView.as_view(), name='dashboard'),
+
     # Category list
     path('categories/', views.CategoryListView.as_view(), name='category_list'),
     

@@ -7,6 +7,10 @@ from django.contrib.messages.views import SuccessMessageMixin
 from .models import Category, Post
 from .forms import CategoryForm, PostForm
 
+# Dashboard
+class DashboardView(generic.TemplateView):
+    template_name = 'common/dashboard.html'
+
 # Category List
 class CategoryListView(generic.ListView):
     model = Category
