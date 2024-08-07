@@ -7,7 +7,13 @@ from django.conf import settings
 from django.conf.urls.static import static
 
 urlpatterns = [
+    # Root directory
     path('admin/', admin.site.urls),
+
+    # Frontend
+    path('', include('client.urls')),
+
+    # Admin site
     path('blog/', include('blog.urls')),
     path('user/', include('user.urls')),
 ]

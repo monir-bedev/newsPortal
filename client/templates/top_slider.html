@@ -1,0 +1,23 @@
+{% load static %}
+
+<!-- Top News Slider Start -->
+<div class="container-fluid py-3">
+    <div class="container">
+        <div class="owl-carousel owl-carousel-2 carousel-item-3 position-relative">
+            {% for obj in national_posts %}
+                <div class="d-flex">
+                    {% if obj.image %}
+                        <img src="{{ obj.image.url }}"
+                             style="width: 80px; height: 80px; object-fit: cover;">
+                    {% else %}
+                        <p>No Image found!</p>
+                    {% endif %}
+                    <div class="d-flex align-items-center bg-light px-3" style="height: 80px;">
+                        <a class="text-secondary font-weight-semi-bold"
+                           href="{% url 'post_details' obj.pk %}">{{ obj.title }}</a>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
